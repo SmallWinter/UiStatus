@@ -159,10 +159,7 @@ public class UiStatusLayout extends FrameLayout implements IUiStatusController, 
 
     private void dispatchTrigger(@UiStatus int uiStatus, @NonNull View trigger) {
         Postcard postcard = mUiStatusController.getUiStatusConfig(uiStatus);
-        if (trigger.getId() != postcard.triggerViewId) return;
-
         OnCompatRetryListener compatRetryListener = mUiStatusController.getOnCompatRetryListener();
-
         //检查是否需要显示加载中状态.
         if (null != postcard.retryListener || null != compatRetryListener) {
             if (mUiStatusController.isAutoLoadingWithRetry()
@@ -172,6 +169,7 @@ public class UiStatusLayout extends FrameLayout implements IUiStatusController, 
                 changeUiStatusIgnore(UiStatus.LOADING);
             }
         }
+        //if (trigger.getId() != postcard.triggerViewId) return;
         //重试.
         if (null != postcard.retryListener) {
             postcard.retryListener.onUiStatusRetry(mTarget, mUiStatusController, trigger);
@@ -253,6 +251,10 @@ public class UiStatusLayout extends FrameLayout implements IUiStatusController, 
 
         View triggerView = view.findViewById(postcard.triggerViewId);
         if (null != triggerView) {
+            triggerView.setTag(uiStatus);
+            triggerView.setOnClickListener(this);
+        }else{
+            triggerView = this;
             triggerView.setTag(uiStatus);
             triggerView.setOnClickListener(this);
         }

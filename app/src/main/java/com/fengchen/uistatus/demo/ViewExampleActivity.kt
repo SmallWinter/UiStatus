@@ -1,13 +1,11 @@
-package com.fengchen.uistatus.demo;
+package com.fengchen.uistatus.demo
 
-import android.os.Bundle;
-import android.os.Handler;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.fengchen.uistatus.UiStatusController;
-import com.fengchen.uistatus.annotation.UiStatus;
+import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import com.fengchen.uistatus.annotation.UiStatus
 
 /**
  * Created by 段露 on 2019/02/01 16:12.
@@ -17,28 +15,31 @@ import com.fengchen.uistatus.annotation.UiStatus;
  * @class ViewExampleActivity
  * @describe View中使用示例.
  */
-public class ViewExampleActivity extends AppCompatActivity {
-
-    private UiStatusController mUiStatusController;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_example_view);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("View中使用示例");
-
-        mUiStatusController = UiStatusController.get().bind(findViewById(R.id.tv_example));
+class ViewExampleActivity : BaseActivity() {
+    override fun contentResId(): Int {
+        return R.id.tv_example
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mUiStatusController.changeUiStatusIgnore(UiStatus.CONTENT);
-            }
-        }, 1000);
+    override fun initView() {
+        setContentView(R.layout.activity_example_view)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.title = "View中使用示例"
+        findViewById<View>(R.id.tv_example).setOnClickListener { v: View? ->
+            showCustomResId(
+                UiStatus.NETWORK_ERROR,
+                R.layout.ui_status_my_custom
+            )
+        }
+    }
+
+    override fun onRetry() {
+        super.onRetry()
+        Toast.makeText(this , "啊啦啦啦" , Toast.LENGTH_SHORT).show()
+        showContent()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed({ showContent() }, 1000)
     }
 }

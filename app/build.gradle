@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.fengchen.uistatus.demo"
-        minSdkVersion 14
-        targetSdkVersion 29
+        minSdkVersion 19
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -27,8 +28,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     implementation project (':uistatus')
+    implementation "androidx.core:core-ktx:1.6.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 //    implementation 'com.fengchen:ui-status:1.0.0'
 //    implementation 'com.github.DuanLu1112:UiStatusStatus:1.0.0'
 //    implementation 'com.github.FengChenSunshine:UiStatus:1.0.4'
 
+}
+repositories {
+    mavenCentral()
 }
