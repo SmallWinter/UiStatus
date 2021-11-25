@@ -1,6 +1,6 @@
 package com.fengchen.uistatus.listener;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.fengchen.uistatus.annotation.UiStatus;

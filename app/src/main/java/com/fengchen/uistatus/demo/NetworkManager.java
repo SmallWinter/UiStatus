@@ -3,7 +3,7 @@ package com.fengchen.uistatus.demo;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by 段露 on 2019/02/01 17:18.

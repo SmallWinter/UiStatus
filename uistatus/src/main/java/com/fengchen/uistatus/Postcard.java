@@ -1,8 +1,8 @@
 package com.fengchen.uistatus;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
 
 import com.fengchen.uistatus.annotation.UiStatus;
 import com.fengchen.uistatus.listener.OnRetryListener;

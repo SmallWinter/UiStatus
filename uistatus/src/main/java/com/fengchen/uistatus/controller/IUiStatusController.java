@@ -1,7 +1,7 @@
 package com.fengchen.uistatus.controller;
 
-import android.support.annotation.IntRange;
-import android.support.annotation.Nullable;
+import androidx.annotation.IntRange;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import com.fengchen.uistatus.annotation.UiStatus;

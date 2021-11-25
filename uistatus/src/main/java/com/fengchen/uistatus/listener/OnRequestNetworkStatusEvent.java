@@ -1,7 +1,7 @@
 package com.fengchen.uistatus.listener;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by 段露 on 2018/11/23 9:50.
